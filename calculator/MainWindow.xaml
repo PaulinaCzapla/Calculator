@@ -16,11 +16,14 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6"/>
+                
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="6"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="6"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -31,27 +34,27 @@
            
             </Grid.RowDefinitions>
 
-            <Button x:Name="Button1" Click="Button_Click" Grid.Row="0" Grid.Column="0" Content="1" FontSize = "30" />
-            <Button x:Name="Button2" Click="Button_Click" Grid.Row="0" Grid.Column="1" Content="2" FontSize = "30" />
-            <Button x:Name="Button3" Click="Button_Click" Grid.Row="0" Grid.Column="2" Content="3" FontSize = "30" />
-            <Button x:Name="Button4" Click="Button_Click" Grid.Row="1" Grid.Column="0" Content="4" FontSize = "30" />
-            <Button x:Name="Button5" Click="Button_Click" Grid.Row="1" Grid.Column="1" Content="5" FontSize = "30" />
-            <Button x:Name="Button6" Click="Button_Click" Grid.Row="1" Grid.Column="2" Content="6" FontSize = "30" />
-            <Button x:Name="Button7" Click="Button_Click" Grid.Row="2" Grid.Column="0" Content="7" FontSize = "30" />
-            <Button x:Name="Button8" Click="Button_Click" Grid.Row="2" Grid.Column="1" Content="8" FontSize = "30" />
-            <Button x:Name="Button9" Click="Button_Click" Grid.Row="2" Grid.Column="2" Content="9" FontSize = "30" />
-            <Button x:Name="Button0" Click="Button_Click" Grid.Row="3" Grid.Column="1" Content="0" FontSize = "30" />
+            <Button x:Name="Button1" Click="Button_Click" Grid.Row="0" Grid.Column="1" Content="1" FontSize = "30" />
+            <Button x:Name="Button2" Click="Button_Click" Grid.Row="0" Grid.Column="2" Content="2" FontSize = "30" />
+            <Button x:Name="Button3" Click="Button_Click" Grid.Row="0" Grid.Column="3" Content="3" FontSize = "30" />
+            <Button x:Name="Button4" Click="Button_Click" Grid.Row="1" Grid.Column="1" Content="4" FontSize = "30" />
+            <Button x:Name="Button5" Click="Button_Click" Grid.Row="1" Grid.Column="2" Content="5" FontSize = "30" />
+            <Button x:Name="Button6" Click="Button_Click" Grid.Row="1" Grid.Column="3" Content="6" FontSize = "30" />
+            <Button x:Name="Button7" Click="Button_Click" Grid.Row="2" Grid.Column="1" Content="7" FontSize = "30" />
+            <Button x:Name="Button8" Click="Button_Click" Grid.Row="2" Grid.Column="2" Content="8" FontSize = "30" />
+            <Button x:Name="Button9" Click="Button_Click" Grid.Row="2" Grid.Column="3" Content="9" FontSize = "30" />
+            <Button x:Name="Button0" Click="Button_Click" Grid.Row="3" Grid.Column="2" Content="0" FontSize = "30" />
 
-            <Button x:Name="ButtonResult" Click="ButtonResult_Click" Grid.Row="3" Grid.Column="0" Content="="  FontSize = "30" />
-            <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Grid.Row="0" Grid.Column="4" Content="C"  FontSize = "30" />
-            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click" Grid.Row="2" Grid.Column="4" Content="+"  FontSize = "30" />
-            <Button x:Name="ButtonSubtraction" Click="ButtonSubtraction_Click" Grid.Row="3" Grid.Column="4" Content="-"  FontSize = "30"/>
-            <Button x:Name="ButtonMultiply" Click="ButtonMultiply_Click" Grid.Row="4" Grid.Column="4" Content="*"  FontSize = "30" />
-            <Button x:Name="ButtonSqrt" Click="ButtonSqrt_Click" Grid.Row="4" Grid.Column="0" Content="sqrt()"  FontSize = "30" />
-            <Button x:Name="ButtonPower" Click="ButtonPower_Click" Grid.Row="4" Grid.Column="1" Content="a^b"  FontSize = "30" />
-            <Button x:Name="ButtonDivision" Click="ButtonDivision_Click" Grid.Row="4" Grid.Column="2" Content="/"  FontSize = "30" />
-            <Button x:Name="ButtonMakeDouble" Click="ButtonMakeDouble_Click" Grid.Row="3" Grid.Column="2" Content=","  FontSize = "30" />
-            <Button x:Name="ButtonMC" Click="ButtonMC_Click" Grid.Row="1" Grid.Column="4" Content="MC"  FontSize = "30"  />
+            <Button x:Name="ButtonResult" Click="ButtonResult_Click" Grid.Row="3" Grid.Column="3" Content="="  FontSize = "30" />
+            <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Grid.Row="0" Grid.Column="5" Content="C"  FontSize = "30" />
+            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click" Grid.Row="2" Grid.Column="5" Content="+"  FontSize = "30" />
+            <Button x:Name="ButtonSubtraction" Click="ButtonSubtraction_Click" Grid.Row="3" Grid.Column="5" Content="-"  FontSize = "30"/>
+            <Button x:Name="ButtonMultiply" Click="ButtonMultiply_Click" Grid.Row="4" Grid.Column="5" Content="*"  FontSize = "30" />
+            <Button x:Name="ButtonSqrt" Click="ButtonSqrt_Click" Grid.Row="4" Grid.Column="1" Content="sqrt"  FontSize = "27" />
+            <Button x:Name="ButtonPower" Click="ButtonPower_Click" Grid.Row="4" Grid.Column="2" Content="a^b"  FontSize = "30" />
+            <Button x:Name="ButtonDivision" Click="ButtonDivision_Click" Grid.Row="4" Grid.Column="3" Content="/"  FontSize = "30" />
+            <Button x:Name="ButtonMakeDouble" Click="ButtonMakeDouble_Click" Grid.Row="3" Grid.Column="1" Content=","  FontSize = "30" />
+            <Button x:Name="ButtonMC" Click="ButtonMC_Click" Grid.Row="1" Grid.Column="5" Content="MC"  FontSize = "30"  />
         </Grid>
 
     </StackPanel>
