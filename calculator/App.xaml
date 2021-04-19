@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:calculator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#eeeeee" />
+            <Setter Property="Background" Value="#323232"/>
+            <Setter Property="FontSize" Value="30" />
+        </Style>
     </Application.Resources>
 </Application>
