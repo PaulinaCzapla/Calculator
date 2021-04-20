@@ -7,7 +7,7 @@ namespace calculator
     public partial class MainWindow : Window
     {
         private Equation equation;
-        private Memory memory;       
+        private Memory memory;
         public MainWindow()
         {
             InitializeComponent();
@@ -16,7 +16,7 @@ namespace calculator
             o = new Power();
 
             ResultText.Text = string.Empty;
-            equation= new Equation();
+            equation = new Equation();
             memory = new Memory();
         }
 
@@ -25,85 +25,78 @@ namespace calculator
             ResultText.Text = string.Empty;
 
             var button = sender as System.Windows.Controls.Button;
-            char currentNumber = button.Name[button.Name.Length -1];
+            char currentNumber = button.Name[button.Name.Length - 1];
             CurrentOperationText.Text += currentNumber;
         }
 
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {  
-                //    string text = equation.CalculateResult(CurrentOperationText.Text);
+            Solve("sqrt");
 
-                //if (text == "error")
-                //    ResultText.Text = text;
-                //else
-                //{
-                    //CurrentOperationText.Text = text;
-                    CurrentOperationText.Text += "sqrt";
+            if (ResultText.Text != "error")
+            {
+                string text = equation.CalculateResult(CurrentOperationText.Text);
 
-                    string text = equation.CalculateResult(CurrentOperationText.Text);
-
-                    if (text == "error")
-                        ResultText.Text = text;
-                    else
-                        CurrentOperationText.Text = text;
-               // }
+                if (text == "error")
+                {
+                    ResultText.Text = text;
+                    CurrentOperationText.Text = string.Empty;
+                }
+                else
+                {
+                    CurrentOperationText.Text = text;
+                }
             }
         }
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text += "^";
-            }
+            Solve("^");
         }
 
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text += "/";
-            }
+            Solve("/");
         }
 
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text += "-";
-            }
+            Solve("-");
         }
 
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text += "*";
-            }
+            Solve("*");
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text += "+";
-            }
+            Solve("+");
         }
 
+        private void Solve(string operation)
+        {
+            ResultText.Text = string.Empty;
 
+            if (equation.CheckPreviousOperation(CurrentOperationText.Text))
+            {
+                string text = equation.CalculateResult(CurrentOperationText.Text);
+
+                if (text == "error")
+                {
+                    ResultText.Text = text;
+                    CurrentOperationText.Text = string.Empty;
+                }
+                else
+                {
+                    CurrentOperationText.Text = text;
+                }
+            }
+            if (ResultText.Text != "error")
+            {
+                CurrentOperationText.Text += operation;
+            }
+        }
 
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
@@ -112,7 +105,7 @@ namespace calculator
             {
                 result = equation.CalculateResult(CurrentOperationText.Text);
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 Console.WriteLine(er.Message);
                 MessageBox.Show("Blad: " + er.Message);
@@ -133,15 +126,15 @@ namespace calculator
 
 
         private void ButtonMakeDouble_Click(object sender, RoutedEventArgs e) => CurrentOperationText.Text += ",";
-        
+
 
         private void ButtonMC_Click(object sender, RoutedEventArgs e)
         {
             string tmp = CurrentOperationText.Text;
-            memory.AddToMemory( ref tmp);
+            memory.AddToMemory(ref tmp);
             CurrentOperationText.Text = tmp;
         }
 
-       
+
     }
 }

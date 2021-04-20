@@ -60,9 +60,16 @@ namespace calculator
 
                         return operation.Calculate(double.Parse(elements[0]), 2).ToString();
 
-                    } else if (currentOperationText.Contains("-"))
+                    }
+                    else if (currentOperationText.Contains("-"))
                     {
                         elements = currentOperationText.Split('-');
+
+                        if (currentOperationText[0] == '-' && elements.Length == 3)
+                        {
+                            elements[0] = "-" + elements[1];
+                            elements[1] = elements[2];
+                        }
                         operation = new Subtraction();
                     }
                     if (elements[0] != string.Empty && elements[1] != string.Empty)
@@ -71,31 +78,22 @@ namespace calculator
                 else
                     currentOperationText = currentOperationText.Remove(0);
             }
-            return string.Empty;
+            return currentOperationText;
         }
 
-        public bool CheckPreviousOperation(ref TextBlock resultText, ref TextBlock currentOperationText)
+        public bool CheckPreviousOperation(string currentOperationText)
         {
-            if (ContainsOperation(currentOperationText.Text))
+            if (ContainsOperation(currentOperationText))
             {
-                string[] elements = currentOperationText.Text.Split('-', '+', '*', '^', '/');
-                if (elements[elements.Length - 2] != string.Empty)
+                string[] elements = null;
+                elements = currentOperationText.Split('-', '+', '*', '^', '/');
+
+                if (elements != null)
                 {
-                    string result = CalculateResult(currentOperationText.Text);
-                    if (result == "error")
-                    {
-                        resultText.Text = result;
-                        return false;
-                    }
-                    else
-                    {
-                        currentOperationText.Text = result;
-                        return true;
-                    }
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
-
     }
 }
