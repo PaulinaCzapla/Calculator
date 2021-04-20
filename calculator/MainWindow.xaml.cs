@@ -32,7 +32,11 @@ namespace calculator
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             equation.Solve("sqrt");
+=======
+            Solve("sqrt");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("sqrt");
 >>>>>>> parent of af32bab (code refactored)
@@ -56,9 +60,13 @@ namespace calculator
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("^");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("^");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("^");
 >>>>>>> parent of af32bab (code refactored)
@@ -67,9 +75,13 @@ namespace calculator
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("/");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("/");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("/");
 >>>>>>> parent of af32bab (code refactored)
@@ -78,9 +90,13 @@ namespace calculator
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("-");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("-");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("-");
 >>>>>>> parent of af32bab (code refactored)
@@ -89,7 +105,11 @@ namespace calculator
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("*");
+=======
+            Solve("*");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("*");
 >>>>>>> parent of af32bab (code refactored)
@@ -98,6 +118,7 @@ namespace calculator
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("+");
         }
 
@@ -105,6 +126,11 @@ namespace calculator
             Solve("+");
         }
 
+=======
+            Solve("+");
+        }
+
+>>>>>>> parent of af32bab (code refactored)
         private void Solve(string operation)
         {
             ResultText.Text = string.Empty;
@@ -129,6 +155,9 @@ namespace calculator
             }
         }
 
+<<<<<<< HEAD
+>>>>>>> parent of af32bab (code refactored)
+=======
 >>>>>>> parent of af32bab (code refactored)
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
