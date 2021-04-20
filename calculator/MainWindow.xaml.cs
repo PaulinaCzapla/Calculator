@@ -33,7 +33,11 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             equation.Solve("sqrt");
+=======
+            Solve("sqrt");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("sqrt");
 >>>>>>> parent of af32bab (code refactored)
@@ -61,9 +65,13 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("^");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("^");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("^");
 >>>>>>> parent of af32bab (code refactored)
@@ -76,9 +84,13 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("/");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("/");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("/");
 >>>>>>> parent of af32bab (code refactored)
@@ -91,9 +103,13 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("-");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("-");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("-");
 >>>>>>> parent of af32bab (code refactored)
@@ -106,7 +122,11 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("*");
+=======
+            Solve("*");
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("*");
 >>>>>>> parent of af32bab (code refactored)
@@ -119,6 +139,7 @@ namespace calculator
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var text = equation.Solve("+");
         }
 
@@ -126,6 +147,11 @@ namespace calculator
             Solve("+");
         }
 
+=======
+            Solve("+");
+        }
+
+>>>>>>> parent of af32bab (code refactored)
 =======
             Solve("+");
         }
@@ -156,6 +182,9 @@ namespace calculator
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of af32bab (code refactored)
+=======
 >>>>>>> parent of af32bab (code refactored)
 =======
 >>>>>>> parent of af32bab (code refactored)
