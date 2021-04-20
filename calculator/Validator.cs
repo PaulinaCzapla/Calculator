@@ -19,7 +19,7 @@ namespace calculator
 
         public bool ValidatePositiveNum(string num)
         {
-            if (num[0] != '-')
+            if (num[0] == '-')
             {
                 return false;
             }
@@ -30,7 +30,7 @@ namespace calculator
         {
             if (num.Length >= 2)
             {
-                if ((num[0] == '0' && num[1] != ',') || (num[0] == '-' && num[1] == ','))
+                if (num[0] == '0' && num[1] != ',' || (num[0] == '-' && num[1] == ','))
                 {
                     return false;
                 }
