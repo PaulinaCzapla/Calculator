@@ -7,24 +7,32 @@ namespace calculator
 {
     class Validator
     {
-        public bool ValidateNotZeroNum(double num)
+        public bool ValidateNotZeroNum(string num)
         {
-            if (num == 0)
+            if (num == "0")
+            {
                 return false;
-            else
-                return true;
+            }
+            return true;
+
         }
 
-        public bool ValidatePositiveNum(double num)
+        public bool ValidatePositiveNum(string num)
         {
-            if (num >= 0)
+            if (num[0] != '-')
+            {
                 return false;
-            else
-                return true;
+            }
+            return true;
         }
 
-        public void AnnouceError(ref TextBlock resultText)
+        public bool ValidateNumber(string num)
         {
+            if ((num[0] == '0' && num[1] != ',') || (num[0] == '-' && num[1] == ','))
+            {
+                return false;
+            }
+            return true;
 
         }
     }
