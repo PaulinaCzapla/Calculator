@@ -6,6 +6,6 @@ namespace calculator
 {
     abstract class MathematicalOperation : Validator
     {
-        public abstract string Calculate( double param1, double param2);
+        public abstract double Calculate( double param1, double param2);
     }
 }

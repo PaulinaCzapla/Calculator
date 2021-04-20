@@ -12,6 +12,8 @@ namespace calculator
         {
             InitializeComponent();
 
+            MathematicalOperation o;
+            o = new Power();
 
             ResultText.Text = string.Empty;
             equation= new Equation();
@@ -31,45 +33,74 @@ namespace calculator
         {
             ResultText.Text = string.Empty;
             if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            {
-                CurrentOperationText.Text = CurrentOperationText.Text + "sqrt";
-                CurrentOperationText.Text = equation.CalculateResult(ref CurrentOperationText);
+            {  
+                //    string text = equation.CalculateResult(CurrentOperationText.Text);
+
+                //if (text == "error")
+                //    ResultText.Text = text;
+                //else
+                //{
+                    //CurrentOperationText.Text = text;
+                    CurrentOperationText.Text += "sqrt";
+
+                    string text = equation.CalculateResult(CurrentOperationText.Text);
+
+                    if (text == "error")
+                        ResultText.Text = text;
+                    else
+                        CurrentOperationText.Text = text;
+               // }
             }
         }
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
             ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            CurrentOperationText.Text += "^";
+
+            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
+            {
+                CurrentOperationText.Text += "^";
+            }
         }
 
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
             ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            CurrentOperationText.Text += "/";
+
+            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
+            {
+                CurrentOperationText.Text += "/";
+            }
         }
 
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
             ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            CurrentOperationText.Text += "-";
+
+            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
+            {
+                CurrentOperationText.Text += "-";
+            }
         }
 
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
             ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            CurrentOperationText.Text += "*";
+
+            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
+            {
+                CurrentOperationText.Text += "*";
+            }
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             ResultText.Text = string.Empty;
-            if(equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
-            CurrentOperationText.Text += "+";
+
+            if (equation.CheckPreviousOperation(ref ResultText, ref CurrentOperationText))
+            {
+                CurrentOperationText.Text += "+";
+            }
         }
 
 
@@ -79,7 +110,7 @@ namespace calculator
             string result = string.Empty;
             try
             {
-                result = equation.CalculateResult(ref CurrentOperationText);
+                result = equation.CalculateResult(CurrentOperationText.Text);
             }
             catch(Exception er)
             {

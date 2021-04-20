@@ -8,71 +8,80 @@ namespace calculator
 {
     class Equation
     {
-        private Operations operations;
 
-        public Equation()
-        {
-            operations = new Operations();
-        }
         public static bool ContainsOperation(string operation) => operation.Contains("-") || operation.Contains("+") || operation.Contains("^") || operation.Contains("/") || operation.Contains("*");
 
-        public string CalculateResult(ref TextBlock currentOperationText)
+        public string CalculateResult(string currentOperationText)
         {
-            if (currentOperationText.Text != string.Empty)
+            MathematicalOperation operation = new Addition();
+            if (currentOperationText != string.Empty)
             {
-                if (currentOperationText.Text[0] != ',')
+                if (currentOperationText[0] != ',')
                 {
-                    if (ContainsOperation((currentOperationText.Text[currentOperationText.Text.Length - 1].ToString())) || currentOperationText.Text[currentOperationText.Text.Length - 1] == ',')
-                        currentOperationText.Text = currentOperationText.Text.Remove(currentOperationText.Text.Length - 1);
+                    if (ContainsOperation((currentOperationText[currentOperationText.Length - 1].ToString())) || currentOperationText[currentOperationText.Length - 1] == ',')
+                    {
+                        currentOperationText = currentOperationText.Remove(currentOperationText.Length - 1);
+                    }
 
-                    if (currentOperationText.Text.Contains("+"))
-                    {
-                        string[] elements = currentOperationText.Text.Split('+');
-                        return operations.addition.Calculate(double.Parse(elements[0]), double.Parse(elements[1]));
+                    string[] elements = { string.Empty, string.Empty };
 
-                    }
-                    if (currentOperationText.Text.Contains("-"))
+                    if (currentOperationText.Contains("+"))
                     {
-                        string[] elements = currentOperationText.Text.Split('-');
-                        return operations.subtraction.Calculate(double.Parse(elements[0]), double.Parse(elements[1]));
+                        elements = currentOperationText.Split('+');
+                        operation = new Addition();
                     }
-                    if (currentOperationText.Text.Contains("*"))
+                    else if (currentOperationText.Contains("*"))
                     {
-                        string[] elements = currentOperationText.Text.Split('*');
-                        return operations.multiplication.Calculate(double.Parse(elements[0]), double.Parse(elements[1]));
+                        elements = currentOperationText.Split('*');
+                        operation = new Multiplication();
                     }
-                    if (currentOperationText.Text.Contains("^"))
+                    else if (currentOperationText.Contains("/"))
                     {
-                        string[] elements = currentOperationText.Text.Split('^');
-                        if (elements[0] != string.Empty && elements[1] != string.Empty)
-                            return operations.power.Calculate(double.Parse(elements[0]), double.Parse(elements[1]));
+                        elements = currentOperationText.Split('/');
 
+                        if (elements[1] == "0")
+                            return "error";
+
+                        operation = new Division();
                     }
-                    if (currentOperationText.Text.Contains("/"))
+                    else if (currentOperationText.Contains("^"))
                     {
-                        string[] elements = currentOperationText.Text.Split('/');
-                        return operations.division.Calculate(double.Parse(elements[0]), double.Parse(elements[1]));
+                        elements = currentOperationText.Split('^');
+                        operation = new Power();
                     }
-                    if (currentOperationText.Text.Contains("sqrt"))
+                    else if (currentOperationText.Contains("sqrt"))
                     {
-                        string[] elements = currentOperationText.Text.Split("sqrt");
-                        return operations.root.Calculate(double.Parse(elements[0]), 2);
+                        elements = currentOperationText.Split("sqrt");
+
+                        if (elements[0][0] == '-')
+                            return "error";
+
+                        operation = new Root();
+
+                        return operation.Calculate(double.Parse(elements[0]), 2).ToString();
+
+                    } else if (currentOperationText.Contains("-"))
+                    {
+                        elements = currentOperationText.Split('-');
+                        operation = new Subtraction();
                     }
+                    if (elements[0] != string.Empty && elements[1] != string.Empty)
+                        return operation.Calculate(double.Parse(elements[0]), double.Parse(elements[1])).ToString();
                 }
                 else
-                    currentOperationText.Text = currentOperationText.Text.Remove(0);
+                    currentOperationText = currentOperationText.Remove(0);
             }
-            return currentOperationText.Text;
+            return string.Empty;
         }
 
-        public bool CheckPreviousOperation(ref TextBlock resultText , ref TextBlock currentOperationText)
+        public bool CheckPreviousOperation(ref TextBlock resultText, ref TextBlock currentOperationText)
         {
             if (ContainsOperation(currentOperationText.Text))
             {
                 string[] elements = currentOperationText.Text.Split('-', '+', '*', '^', '/');
                 if (elements[elements.Length - 2] != string.Empty)
                 {
-                    string result = CalculateResult(ref currentOperationText);
+                    string result = CalculateResult(currentOperationText.Text);
                     if (result == "error")
                     {
                         resultText.Text = result;

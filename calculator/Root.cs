@@ -6,28 +6,23 @@ namespace calculator
 {
     class Root : MathematicalOperation
     {
-        public override string Calculate(double param1, double param2 = 2)
+        public override double Calculate(double param1, double param2 = 2)
         {
-            string result;
-            if (ValidatePositiveNum(param1))
+            double result;
+
+            if (param2 == 0)
             {
-                if (param2 == 0)
-                {
-                    result = 1.ToString();
-                }
-                else if (param2 == 2)
-                {
-                    result = Math.Sqrt(param1).ToString();
-                }
-                else
-                {
-                    result = Math.Pow(param1, 1 / param2).ToString();
-                }
+                result = 1;
+            }
+            else if (param2 == 2)
+            {
+                result = Math.Sqrt(param1);
             }
             else
             {
-                result = "error";
+                result = Math.Pow(param1, 1 / param2);
             }
+
             return result;
         }
     }

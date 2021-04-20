@@ -7,16 +7,9 @@ namespace calculator
     class Division : MathematicalOperation
     {
 
-        public override string Calculate(double param1, double param2)
+        public override double Calculate(double param1, double param2)
         {
-            if (ValidateNotZeroNum(param2))
-            {
-                return (param1 / param2).ToString();
-            }
-            else
-            {
-                return "error";
-            }
+                return param1 / param2;
         }
     }
 }
