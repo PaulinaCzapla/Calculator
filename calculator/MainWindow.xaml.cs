@@ -22,16 +22,16 @@ namespace calculator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ResultText.Text = string.Empty;
-
             var button = sender as System.Windows.Controls.Button;
             char currentNumber = button.Name[button.Name.Length - 1];
-            CurrentOperationText.Text += currentNumber;
+
+            Tuple<string, string> results = Tuple.Create(CurrentOperationText.Text += currentNumber, string.Empty);
+            DisplayResults(results);
         }
 
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
-            Solve("sqrt");
+            DisplayResults(equation.Solve("sqrt"));
 
             if (ResultText.Text != "error")
             {
@@ -51,53 +51,34 @@ namespace calculator
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
-            Solve("^");
+            DisplayResults(equation.Solve("^"));
         }
 
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
-            Solve("/");
+            DisplayResults(equation.Solve("/"));
         }
 
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
-            Solve("-");
+            DisplayResults(equation.Solve("-"));
         }
 
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
-            Solve("*");
+            DisplayResults(equation.Solve("*"));
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Solve("+");
+            DisplayResults(equation.Solve("+"));
         }
 
-        private void Solve(string operation)
+        private void DisplayResults(Tuple<string, string> text)
         {
-            ResultText.Text = string.Empty;
-
-            if (equation.CheckPreviousOperation(CurrentOperationText.Text))
-            {
-                string text = equation.CalculateResult(CurrentOperationText.Text);
-
-                if (text == "error")
-                {
-                    ResultText.Text = text;
-                    CurrentOperationText.Text = string.Empty;
-                }
-                else
-                {
-                    CurrentOperationText.Text = text;
-                }
-            }
-            if (ResultText.Text != "error")
-            {
-                CurrentOperationText.Text += operation;
-            }
+            CurrentOperationText.Text = text.Item1;
+            ResultText.Text = text.Item2;
         }
-
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
             string result = string.Empty;
@@ -110,9 +91,9 @@ namespace calculator
                 Console.WriteLine(er.Message);
                 MessageBox.Show("Blad: " + er.Message);
             }
-            ResultText.Text = result;
             memory.setMemory(result);
-            CurrentOperationText.Text = string.Empty;
+            Tuple<string, string> results = Tuple.Create(string.Empty, result);
+            DisplayResults(results);
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -124,9 +105,7 @@ namespace calculator
             }
         }
 
-
         private void ButtonMakeDouble_Click(object sender, RoutedEventArgs e) => CurrentOperationText.Text += ",";
-
 
         private void ButtonMC_Click(object sender, RoutedEventArgs e)
         {
