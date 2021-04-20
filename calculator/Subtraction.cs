@@ -12,16 +12,16 @@ namespace calculator
         }
 
         public override string[] Parse(string currentOperationText)
-        {       
-            string [] elements = currentOperationText.Split('-');
+        {
+            string[] elements = currentOperationText.Split('-');
 
             if (currentOperationText[0] == '-' && elements.Length == 3)
             {
                 elements[0] = "-" + elements[1];
                 elements[1] = elements[2];
             }
-          
-            if(!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]))
+
+            if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]))
             {
                 elements[0] = "error";
             }

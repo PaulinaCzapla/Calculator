@@ -13,11 +13,14 @@ namespace calculator
 
         public override string[] Parse(string currentOperationText)
         {
-            string [] elements= currentOperationText.Split('*');
+            string[] elements = currentOperationText.Split('*');
 
-            if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]))
+            if (elements.Length >= 2)
             {
-                elements[0] = "error";
+                if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]))
+                {
+                    elements[0] = "error";
+                }
             }
 
             return elements;

@@ -28,9 +28,12 @@ namespace calculator
 
         public bool ValidateNumber(string num)
         {
-            if ((num[0] == '0' && num[1] != ',') || (num[0] == '-' && num[1] == ','))
+            if (num.Length >= 2)
             {
-                return false;
+                if ((num[0] == '0' && num[1] != ',') || (num[0] == '-' && num[1] == ','))
+                {
+                    return false;
+                }
             }
             return true;
 

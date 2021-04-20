@@ -30,7 +30,8 @@ namespace calculator
         {
             string [] elements = currentOperationText.Split("sqrt");
 
-            if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]) || !ValidatePositiveNum(elements[0]))
+
+            if (!ValidateNumber(elements[0])|| !ValidatePositiveNum(elements[0]))
             {
                 elements[0] = "error";
             }
