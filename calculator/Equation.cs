@@ -13,7 +13,7 @@ namespace calculator
 
         public string CalculateResult(string currentOperationText)
         {
-            MathematicalOperation operation = new Addition();
+
             if (currentOperationText != string.Empty)
             {
                 if (currentOperationText[0] != ',')
@@ -24,59 +24,51 @@ namespace calculator
                     }
 
                     string[] elements = { string.Empty, string.Empty };
+                    MathematicalOperation operation = new Addition();
 
                     if (currentOperationText.Contains("+"))
                     {
-                        elements = currentOperationText.Split('+');
                         operation = new Addition();
                     }
                     else if (currentOperationText.Contains("*"))
                     {
-                        elements = currentOperationText.Split('*');
                         operation = new Multiplication();
                     }
                     else if (currentOperationText.Contains("/"))
                     {
-                        elements = currentOperationText.Split('/');
-
-                        if (elements[1] == "0")
-                            return "error";
-
                         operation = new Division();
                     }
                     else if (currentOperationText.Contains("^"))
                     {
-                        elements = currentOperationText.Split('^');
                         operation = new Power();
                     }
                     else if (currentOperationText.Contains("sqrt"))
                     {
-                        elements = currentOperationText.Split("sqrt");
-
-                        if (elements[0][0] == '-')
-                            return "error";
-
                         operation = new Root();
-
-                        return operation.Calculate(double.Parse(elements[0]), 2).ToString();
-
                     }
                     else if (currentOperationText.Contains("-"))
                     {
-                        elements = currentOperationText.Split('-');
-
-                        if (currentOperationText[0] == '-' && elements.Length == 3)
-                        {
-                            elements[0] = "-" + elements[1];
-                            elements[1] = elements[2];
-                        }
                         operation = new Subtraction();
                     }
-                    if (elements[0] != string.Empty && elements[1] != string.Empty)
-                        return operation.Calculate(double.Parse(elements[0]), double.Parse(elements[1])).ToString();
+
+                    elements = operation.Parse(currentOperationText);
+
+                    if (elements[0] != "error")
+                    {
+                        if (elements[0] != string.Empty && elements[1] != string.Empty)
+                        {
+                            return operation.Calculate(double.Parse(elements[0]), double.Parse(elements[1])).ToString();
+                        }
+                    }
+                    else
+                    {
+                        return "error";
+                    }
                 }
                 else
+                {
                     currentOperationText = currentOperationText.Remove(0);
+                }
             }
             return currentOperationText;
         }
@@ -102,13 +94,14 @@ namespace calculator
             string resultText = string.Empty;
             string currentOperation = currentOperationText;
 
-            if (CheckPreviousOperation(operation))
+            if (CheckPreviousOperation(currentOperationText))
             {
                 string text = CalculateResult(operation);
 
                 if (text == "error")
                 {
                     resultText = text;
+                    currentOperation = string.Empty;
                 }
                 else
                 {
@@ -117,7 +110,7 @@ namespace calculator
             }
             if (resultText != "error")
             {
-                currentOperation += operation;
+                currentOperation = currentOperation + operation;
             }
             Tuple<string, string> result = Tuple.Create(currentOperation, resultText);
             return result;

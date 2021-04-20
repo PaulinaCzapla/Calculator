@@ -28,14 +28,25 @@ namespace calculator
             var button = sender as System.Windows.Controls.Button;
             char currentNumber = button.Name[button.Name.Length - 1];
             CurrentOperationText.Text += currentNumber;
-
-            Tuple<string, string> results = Tuple.Create(CurrentOperationText.Text += currentNumber, string.Empty);
-            DisplayResults(results);
         }
 
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
             DisplayResults(equation.Solve("sqrt", CurrentOperationText.Text));
+
+            if (ResultText.Text != "error")
+            {
+                string text = equation.CalculateResult(CurrentOperationText.Text);
+                if (text == "error")
+                {
+                    ResultText.Text = text;
+                    CurrentOperationText.Text = string.Empty;
+                }
+                else
+                {
+                    CurrentOperationText.Text = text;
+                }
+            }
         }
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
