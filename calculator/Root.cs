@@ -25,5 +25,18 @@ namespace calculator
 
             return result;
         }
+
+        public override string[] Parse(string currentOperationText)
+        {
+            string [] elements = currentOperationText.Split("sqrt");
+
+            if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]) || !ValidatePositiveNum(elements[0]))
+            {
+                elements[0] = "error";
+            }
+
+            elements[1] = "2";
+            return elements;
+        }
     }
 }

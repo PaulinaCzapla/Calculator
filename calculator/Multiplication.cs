@@ -10,5 +10,17 @@ namespace calculator
         {
             return param1 * param2;
         }
+
+        public override string[] Parse(string currentOperationText)
+        {
+            string [] elements= currentOperationText.Split('*');
+
+            if (!ValidateNumber(elements[0]) || !ValidateNumber(elements[1]))
+            {
+                elements[0] = "error";
+            }
+
+            return elements;
+        }
     }
 }
