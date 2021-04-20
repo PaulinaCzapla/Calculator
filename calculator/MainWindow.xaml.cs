@@ -31,7 +31,11 @@ namespace calculator
 
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             equation.Solve("sqrt");
+=======
+            Solve("sqrt");
+>>>>>>> parent of af32bab (code refactored)
 
             if (ResultText.Text != "error")
             {
@@ -51,35 +55,81 @@ namespace calculator
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var text = equation.Solve("^");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("^");
+>>>>>>> parent of af32bab (code refactored)
         }
 
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var text = equation.Solve("/");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("/");
+>>>>>>> parent of af32bab (code refactored)
         }
 
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var text = equation.Solve("-");
             CurrentOperationText.Text = text.Item1;
             ResultText.Text = text.Item2;
+=======
+            Solve("-");
+>>>>>>> parent of af32bab (code refactored)
         }
 
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var text = equation.Solve("*");
+=======
+            Solve("*");
+>>>>>>> parent of af32bab (code refactored)
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var text = equation.Solve("+");
         }
 
+=======
+            Solve("+");
+        }
+
+        private void Solve(string operation)
+        {
+            ResultText.Text = string.Empty;
+
+            if (equation.CheckPreviousOperation(CurrentOperationText.Text))
+            {
+                string text = equation.CalculateResult(CurrentOperationText.Text);
+
+                if (text == "error")
+                {
+                    ResultText.Text = text;
+                    CurrentOperationText.Text = string.Empty;
+                }
+                else
+                {
+                    CurrentOperationText.Text = text;
+                }
+            }
+            if (ResultText.Text != "error")
+            {
+                CurrentOperationText.Text += operation;
+            }
+        }
+
+>>>>>>> parent of af32bab (code refactored)
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
             string result = string.Empty;
