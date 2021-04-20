@@ -22,16 +22,16 @@ namespace calculator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ResultText.Text = string.Empty;
+
             var button = sender as System.Windows.Controls.Button;
             char currentNumber = button.Name[button.Name.Length - 1];
-
-            Tuple<string, string> results = Tuple.Create(CurrentOperationText.Text += currentNumber, string.Empty);
-            DisplayResults(results);
+            CurrentOperationText.Text += currentNumber;
         }
 
         private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("sqrt"));
+            equation.Solve("sqrt");
 
             if (ResultText.Text != "error")
             {
@@ -51,34 +51,35 @@ namespace calculator
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("^"));
+            var text = equation.Solve("^");
+            CurrentOperationText.Text = text.Item1;
+            ResultText.Text = text.Item2;
         }
 
         private void ButtonDivision_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("/"));
+            var text = equation.Solve("/");
+            CurrentOperationText.Text = text.Item1;
+            ResultText.Text = text.Item2;
         }
 
         private void ButtonSubtraction_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("-"));
+            var text = equation.Solve("-");
+            CurrentOperationText.Text = text.Item1;
+            ResultText.Text = text.Item2;
         }
 
         private void ButtonMultiply_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("*"));
+            var text = equation.Solve("*");
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            DisplayResults(equation.Solve("+"));
+            var text = equation.Solve("+");
         }
 
-        private void DisplayResults(Tuple<string, string> text)
-        {
-            CurrentOperationText.Text = text.Item1;
-            ResultText.Text = text.Item2;
-        }
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
             string result = string.Empty;
@@ -91,9 +92,9 @@ namespace calculator
                 Console.WriteLine(er.Message);
                 MessageBox.Show("Blad: " + er.Message);
             }
+            ResultText.Text = result;
             memory.setMemory(result);
-            Tuple<string, string> results = Tuple.Create(string.Empty, result);
-            DisplayResults(results);
+            CurrentOperationText.Text = string.Empty;
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -105,7 +106,9 @@ namespace calculator
             }
         }
 
+
         private void ButtonMakeDouble_Click(object sender, RoutedEventArgs e) => CurrentOperationText.Text += ",";
+
 
         private void ButtonMC_Click(object sender, RoutedEventArgs e)
         {
